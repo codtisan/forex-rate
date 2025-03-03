@@ -23,6 +23,10 @@ async function getForexRateData() {
 }
 
 export default function Home() {
+  if (!apiKey) {
+    return <div>apiKey not found</div>;
+  }
+  
   const { data, isLoading, error } = useQuery({
     queryKey: ["forex-rate"],
     queryFn: getForexRateData,
